@@ -1,3 +1,9 @@
+# revision 15878
+# category Package
+# catalog-ctan /macros/latex/contrib/mdwtools
+# catalog-date 2008-06-23 17:43:34 +0200
+# catalog-license gpl
+# catalog-version 1.05.4
 Name:		texlive-mdwtools
 Version:	1.05.4
 Release:	1
@@ -80,6 +86,7 @@ verbatim handling; and - syntax diagrams.
 %doc %{_texmfdistdir}/source/latex/mdwtools/mdwtools.ins
 %doc %{_texmfdistdir}/source/latex/mdwtools/sverb.dtx
 %doc %{_texmfdistdir}/source/latex/mdwtools/syntax.dtx
+%doc %{_tlpkgobjdir}/*.tlpobj
 
 #-----------------------------------------------------------------------
 %prep
@@ -90,3 +97,5 @@ verbatim handling; and - syntax diagrams.
 %install
 mkdir -p %{buildroot}%{_texmfdistdir}
 cp -fpar tex doc source %{buildroot}%{_texmfdistdir}
+mkdir -p %{buildroot}%{_tlpkgobjdir}
+cp -fpa tlpkg/tlpobj/*.tlpobj %{buildroot}%{_tlpkgobjdir}
