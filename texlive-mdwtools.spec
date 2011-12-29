@@ -18,9 +18,6 @@ BuildArch:	noarch
 BuildRequires:	texlive-tlpkg
 Requires(pre):	texlive-tlpkg
 Requires(post):	texlive-kpathsea
-Conflicts:	texlive-texmf <= 20110705-3
-Conflicts:	texlive-doc <= 20110705-3
-Conflicts:	texlive-source <= 20110705-3
 
 %description
 This collection of tools includes: - support for short commands
@@ -31,20 +28,12 @@ handling; - mdwmath which adds some minor changes to LaTeX
 maths; - a rewrite of LaTeX's tabular and array environments; -
 verbatim handling; and - syntax diagrams.
 
-%pre
-    %_texmf_mktexlsr_pre
-
 %post
-    %_texmf_mktexlsr_post
-
-%preun
-    if [ $1 -eq 0 ]; then
-	%_texmf_mktexlsr_pre
-    fi
+    %{_sbindir}/texlive.post
 
 %postun
     if [ $1 -eq 0 ]; then
-	%_texmf_mktexlsr_post
+	%{_sbindir}/texlive.post
     fi
 
 #-----------------------------------------------------------------------
@@ -87,7 +76,6 @@ verbatim handling; and - syntax diagrams.
 %doc %{_texmfdistdir}/source/latex/mdwtools/mdwtools.ins
 %doc %{_texmfdistdir}/source/latex/mdwtools/sverb.dtx
 %doc %{_texmfdistdir}/source/latex/mdwtools/syntax.dtx
-%doc %{_tlpkgobjdir}/*.tlpobj
 
 #-----------------------------------------------------------------------
 %prep
@@ -98,5 +86,3 @@ verbatim handling; and - syntax diagrams.
 %install
 mkdir -p %{buildroot}%{_texmfdistdir}
 cp -fpar tex doc source %{buildroot}%{_texmfdistdir}
-mkdir -p %{buildroot}%{_tlpkgobjdir}
-cp -fpa tlpkg/tlpobj/*.tlpobj %{buildroot}%{_tlpkgobjdir}
