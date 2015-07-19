@@ -6,7 +6,7 @@
 # catalog-version 1.05.4
 Name:		texlive-mdwtools
 Version:	1.05.4
-Release:	9
+Release:	10
 Summary:	Miscellaneous tools by Mark Wooding
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/macros/latex/contrib/mdwtools
