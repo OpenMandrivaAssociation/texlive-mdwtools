@@ -1,19 +1,13 @@
-# revision 15878
-# category Package
-# catalog-ctan /macros/latex/contrib/mdwtools
-# catalog-date 2008-06-23 17:43:34 +0200
-# catalog-license gpl
-# catalog-version 1.05.4
 Name:		texlive-mdwtools
-Version:	1.05.4
-Release:	11
+Version:	15878
+Release:	1
 Summary:	Miscellaneous tools by Mark Wooding
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/macros/latex/contrib/mdwtools
 License:	GPL
-Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/mdwtools.tar.xz
-Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/mdwtools.doc.tar.xz
-Source2:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/mdwtools.source.tar.xz
+Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/mdwtools.r%{version}.tar.xz
+Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/mdwtools.doc.r%{version}.tar.xz
+Source2:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/mdwtools.source.r%{version}.tar.xz
 BuildArch:	noarch
 BuildRequires:	texlive-tlpkg
 Requires(pre):	texlive-tlpkg
@@ -29,12 +23,12 @@ maths; - a rewrite of LaTeX's tabular and array environments; -
 verbatim handling; and - syntax diagrams.
 
 %post
-    %{_sbindir}/texlive.post
+%{_sbindir}/texlive.post
 
 %postun
-    if [ $1 -eq 0 ]; then
+if [ $1 -eq 0 ]; then
 	%{_sbindir}/texlive.post
-    fi
+fi
 
 #-----------------------------------------------------------------------
 %files
@@ -79,24 +73,11 @@ verbatim handling; and - syntax diagrams.
 
 #-----------------------------------------------------------------------
 %prep
-%setup -c -a0 -a1 -a2
+%setup -c -a1 -a2
+%autopatch -p1
 
 %build
 
 %install
 mkdir -p %{buildroot}%{_texmfdistdir}
 cp -fpar tex doc source %{buildroot}%{_texmfdistdir}
-
-
-%changelog
-* Wed Jan 04 2012 Paulo Andrade <pcpa@mandriva.com.br> 1.05.4-2
-+ Revision: 753845
-- Rebuild to reduce used resources
-
-* Sat Nov 05 2011 Paulo Andrade <pcpa@mandriva.com.br> 1.05.4-1
-+ Revision: 718986
-- texlive-mdwtools
-- texlive-mdwtools
-- texlive-mdwtools
-- texlive-mdwtools
-
