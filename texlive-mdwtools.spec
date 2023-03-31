@@ -1,6 +1,6 @@
 Name:		texlive-mdwtools
 Version:	15878
-Release:	1
+Release:	2
 Summary:	Miscellaneous tools by Mark Wooding
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/macros/latex/contrib/mdwtools
